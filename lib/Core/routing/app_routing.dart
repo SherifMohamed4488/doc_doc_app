@@ -1,9 +1,14 @@
+import 'package:booking/Core/di/dependency_injection.dart';
 import 'package:booking/Features/Splash/presentation/views/splash_view.dart';
 import 'package:booking/core/routing/routes.dart';
 import 'package:booking/features/login/presentation/views/login_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../Features/Home/presentation/views/home_view.dart';
+import '../../Features/Login/presentation/view_model/login_cubit/login_cubit.dart';
 import '../../Features/OnBoarding/presentation/views/onBoardingView.dart';
+import '../../Features/SignUp/presentation/views/sign_up_view.dart';
 
 
 
@@ -17,7 +22,16 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const SplashView());
 
     case MyRoutes.loginView:
-      return MaterialPageRoute(builder: (context) => const LoginView());
+      return MaterialPageRoute(builder: (context) => BlocProvider(
+          create: (context) => getIt<LoginCubit>(),
+          child: const LoginView()));
+    case MyRoutes.signUpView:
+      return MaterialPageRoute(builder: (context) => BlocProvider(
+          create: (context) => getIt<LoginCubit>(),
+          child: const SignUpView()));
+
+    case MyRoutes.homeView:
+      return MaterialPageRoute(builder: (context) => const HomeView());
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

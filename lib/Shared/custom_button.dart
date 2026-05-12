@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
-   CustomButton({required this.text });
+   CustomButton({required this.text  , this.onTap });
 
   String text;
+  VoidCallback? onTap ;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){},
+      onTap: onTap,
       child: Container(
 
           width: 316.w,

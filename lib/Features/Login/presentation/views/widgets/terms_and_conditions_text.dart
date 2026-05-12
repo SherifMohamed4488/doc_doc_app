@@ -8,37 +8,42 @@ class TermsAndConditionsText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:  EdgeInsets.only( left: 4.w ),
-      child: SizedBox(
-        width: 270.w,
-        child: Text.rich(
-          TextSpan(
-            children: [
-              TextSpan(
-                  text: 'By logging, you agree to our',
-                  style: TextStyles.regular12.copyWith(height: 1.50, color: const Color(0xFF9E9E9E),
-                  )
-              ),
-              TextSpan(
-                  text: 'Terms & Conditions',
-                  style: TextStyles.regular12.copyWith(height: 1.50, color: const Color(0xFF242424),
-                  )
+    return
 
-              ),
-              TextSpan(
-                  text: 'and',
+
+
+
+      Padding(
+      padding:  EdgeInsets.only(left: 20.w , right: 20.w ),
+      child: Text.rich(
+        textAlign: TextAlign.center,
+
+        TextSpan(
+          children: [
+            TextSpan(
+                text: 'By logging, you agree to our ',
                 style: TextStyles.regular12.copyWith(height: 1.50, color: const Color(0xFF9E9E9E),
-
-              ),),
-              TextSpan(
-                text: 'PrivacyPolicy.',
+                )
+            ),
+            TextSpan(
+                text: 'Terms & Conditions ',
                 style: TextStyles.regular12.copyWith(height: 1.50, color: const Color(0xFF242424),
+                )
+
+            ),
+
+            TextSpan(
+                text: 'and ',
+              style: TextStyles.regular12.copyWith(height: 1.50, color: const Color(0xFF9E9E9E),
+
+            ),),
+            TextSpan(
+              text: 'PrivacyPolicy.',
+              style: TextStyles.regular12.copyWith(height: 1.50, color: const Color(0xFF242424),
 
 
-              ),),
-            ],
-          ),
+            ),),
+          ],
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:booking/Core/di/dependency_injection.dart';
 import 'package:booking/core/constants/app_colors.dart';
 import 'package:booking/core/routing/routes.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/routing/app_routing.dart';
 
 void main() {
+  setupGetIt();
   runApp(const MyApp());
 }
 
@@ -26,8 +28,6 @@ class MyApp extends StatelessWidget {
 
 
 
-
-
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
 
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
               // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             ),
             onGenerateRoute: onGenerateRoute,
-            initialRoute: MyRoutes.loginView,
+            initialRoute: MyRoutes.signUpView,
 
           ),
 
