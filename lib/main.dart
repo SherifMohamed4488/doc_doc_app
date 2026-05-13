@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
           (_, __) => MaterialApp(
 
 
-
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
 
