@@ -1,3 +1,8 @@
+import 'package:booking/Core/helpers/extensions.dart';
+import 'package:booking/Features/SignUp/presentation/view_model/sign_up_cubit.dart';
+import 'package:booking/Features/SignUp/presentation/views/widgets/already_have_an_account_widget.dart';
+import 'package:booking/Features/SignUp/presentation/views/widgets/email_and_password_2.dart';
+import 'package:booking/Features/SignUp/presentation/views/widgets/sign_up_bloc_listener.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,7 +17,7 @@ import '../../../../Login/presentation/views/widgets/terms_and_conditions_text.d
 
 class SignUpViewBody extends StatelessWidget {
    SignUpViewBody({super.key});
-   final GlobalKey<FormState> formKey = GlobalKey();
+   // final GlobalKey<FormState> formKey = GlobalKey();
 
   AutovalidateMode autoVlidateMode = AutovalidateMode.disabled;
 
@@ -26,13 +31,13 @@ class SignUpViewBody extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 24.w),
 
             child: Form(
-              key:formKey ,
+              key:context.read<SignUpCubit>().formKey ,
               autovalidateMode: autoVlidateMode,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
 
                 children: [
-                  Gap(50.h),
+                  Gap(20.h),
                   FirstTexts(
                     text1: "Create Account",
                     text2:
@@ -41,7 +46,7 @@ class SignUpViewBody extends StatelessWidget {
 
                   Gap(17.h),
 
-                  EmailAndPassword(),
+                  EmailAndPassword2(),
 
                   Gap(8.h),
 
@@ -49,7 +54,10 @@ class SignUpViewBody extends StatelessWidget {
 
                   Gap(32.h),
 
-                  CustomButton(text: "Sign up" , onTap: (){},),
+                  CustomButton(text: "Sign up" , onTap: (){
+                    validateThenSignUp(context);
+
+                  },),
                   // Gap(46.h),
                   // OrWidget(),
                   Gap(16.h),
@@ -57,8 +65,17 @@ class SignUpViewBody extends StatelessWidget {
                   TermsAndConditionsText(),
 
                   Gap(24.h),
-                  DontHaveAnAccountWidget(text1: "Already have an account ? ",  textButton: "Log In", onTap: (){},),
-                  // LoginBlocListener(),
+                 AlreadyHaveAnAccountWidget(
+                   text1: "Already have an account? ",
+                   textButton: "Log In",
+                   onTap: (){
+
+context.pop();
+                   },
+                 ),
+                  Gap(24.h),
+
+                  SignUpBlocListener(),
                 ],
               ),
             ),
@@ -67,4 +84,13 @@ class SignUpViewBody extends StatelessWidget {
       ),
     );
   }
+
+   void validateThenSignUp(BuildContext context){
+
+     if(context.read<SignUpCubit>().formKey.currentState!.validate()){
+
+       context.read<SignUpCubit>().emitSignUpStates();
+
+     }
+   }
 }

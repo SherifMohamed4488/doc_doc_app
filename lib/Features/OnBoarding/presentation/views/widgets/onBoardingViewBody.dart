@@ -1,3 +1,5 @@
+import 'package:booking/Core/helpers/extensions.dart';
+import 'package:booking/Core/routing/my_routes.dart';
 import 'package:booking/Features/OnBoarding/presentation/views/widgets/text_widget.dart';
 import 'package:booking/Shared/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +65,9 @@ class OnBoardingviewbody extends StatelessWidget {
                 ),
               ),
 
-              CustomButton(text: "Get Started"),
+              CustomButton(text: "Get Started" , onTap: (){
+                context.pushNamed(MyRoutes.loginView);
+              },),
               Gap(32.h),
             ],
           ),

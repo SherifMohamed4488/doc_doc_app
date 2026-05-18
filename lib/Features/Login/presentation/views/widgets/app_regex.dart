@@ -1,16 +1,27 @@
 class AppRegex {
   // Email Regex
+
   static final RegExp emailRegex = RegExp(
     r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
   );
 
+// Name Regex
+// At least 3 characters
+  static final RegExp nameRegex = RegExp(
+    r'^.{3,}$',
+  );
+
+  // Egyptian Phone Number Regex
+  // Valid examples:
+  // 01012345678
+  // 01112345678
+  // 01212345678
+  // 01512345678
+  static final RegExp egyptPhoneRegex = RegExp(
+    r'^01[0125][0-9]{8}$',
+  );
+
   // Password Regex
-  // At least:
-  // 1 uppercase
-  // 1 lowercase
-  // 1 number
-  // 1 special character
-  // Min 8 chars
   static final RegExp passwordRegex = RegExp(
     r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$',
   );
@@ -19,10 +30,18 @@ class AppRegex {
   static bool isEmailValid(String email) {
     return emailRegex.hasMatch(email);
   }
+  static bool isNameValid(String name) {
+    return nameRegex.hasMatch(name.trim());
+  }
+
+  static bool isEgyptPhoneValid(String phone) {
+    return egyptPhoneRegex.hasMatch(phone);
+  }
 
   static bool isPasswordValid(String password) {
     return passwordRegex.hasMatch(password);
   }
+
 
   static bool hasLowerCase(String password) {
     return RegExp(r'[a-z]').hasMatch(password);

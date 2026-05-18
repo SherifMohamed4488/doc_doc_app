@@ -1,10 +1,9 @@
 import 'package:booking/Core/di/dependency_injection.dart';
 import 'package:booking/core/constants/app_colors.dart';
-import 'package:booking/core/routing/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'Core/routing/my_routes.dart';
 import 'core/routing/app_routing.dart';
 
 void main() {
@@ -41,7 +40,7 @@ class MyApp extends StatelessWidget {
               // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             ),
             onGenerateRoute: onGenerateRoute,
-            initialRoute: MyRoutes.signUpView,
+            initialRoute: MyRoutes.loginView,
 
           ),
 
