@@ -1,4 +1,5 @@
-import 'package:booking/Features/Login/data/models/login_request_body.dart';
+import 'package:booking/Core/helpers/extensions.dart';
+
 import 'package:booking/Features/Login/presentation/views/widgets/dont_have_an_account_widget.dart';
 import 'package:booking/Features/Login/presentation/views/widgets/email_and_password.dart';
 import 'package:booking/Features/Login/presentation/views/widgets/first_texts.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../Core/routing/my_routes.dart';
 import '../../view_model/login_cubit/login_cubit.dart';
 
 class LoginViewBody extends StatefulWidget {
@@ -46,7 +48,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 crossAxisAlignment: CrossAxisAlignment.start,
 
                 children: [
-                  Gap(50.h),
+                  Gap(30.h),
                   FirstTexts(
                     text1: "Welcome Back",
                     text2:
@@ -74,7 +76,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   TermsAndConditionsText(),
 
                   Gap(24.h),
-                  DontHaveAnAccountWidget( text1: "Already have an account yet?", textButton: "Sign Up", onTap: (){},),
+                  DontHaveAnAccountWidget( text1: "Don't have an account?",
+                    textButton: "Sign Up", onTap: (){
+
+                    context.pushNamed(MyRoutes.signUpView);
+                    },),
                   LoginBlocListener(),
                 ],
               ),
@@ -89,12 +95,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
 
     if(context.read<LoginCubit>().formKey.currentState!.validate()){
 
-      context.read<LoginCubit>().emitLoginStates(
-          LoginRequestBody(
-          email: context.read<LoginCubit>().emailController.text,
-            password: context.read<LoginCubit>().passwordController.text,
-      )
-      );
+      context.read<LoginCubit>().emitLoginStates();
 
     }
   }

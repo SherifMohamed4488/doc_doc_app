@@ -20,6 +20,8 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   // final GlobalKey<FormState> formKey = GlobalKey();
   bool isObsecure = true;
   late TextEditingController passwordController;
+  late TextEditingController emailController;
+
   bool hasLowerCase = false;
   bool hasUpperCase = false;
   bool hasSpecialCharacters = false;
@@ -56,12 +58,13 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
         Column(
           children: [
             CustomTextField(
+              controller: context.read<LoginCubit>().emailController,
               hintText: "Email",
               textInputType: TextInputType.emailAddress,
               onSaved: (value) {},
               validator: (value){
 
-                if( value == null || value.isEmpty || !AppRegex.isEmailValid(value))  {
+                if( value == null || value.isEmpty )  {
                   return "required field ";
                 }
                 return null;
@@ -76,12 +79,13 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
               onSaved: (value) {},
     validator: (value){
 
-      if( value == null || value.isEmpty || !AppRegex.isPasswordValid(value))  {
+      if( value == null || value.isEmpty )  {
         return "required field ";
       }
       return null;
 
     },
+
               suffixIcon: GestureDetector(
                 onTap: () {
                   setState(() => isObsecure = !isObsecure);
@@ -100,17 +104,18 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
 
               isObsecure: isObsecure,
             ),
+
           ],
         ),
 
         Gap(24.h),
-        PassowrdValidations(
-          hasLowerCase: hasLowerCase,
-          hasUpperCase: hasUpperCase,
-          hasSpecialCharacters: hasSpecialCharacters,
-          hasNumber: hasNumber,
-          hasMinLength: hasMinLength,
-        ),
+        // PassowrdValidations(
+        //   hasLowerCase: hasLowerCase,
+        //   hasUpperCase: hasUpperCase,
+        //   hasSpecialCharacters: hasSpecialCharacters,
+        //   hasNumber: hasNumber,
+        //   hasMinLength: hasMinLength,
+        // ),
       ],
     );
   }

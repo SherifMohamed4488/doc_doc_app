@@ -152,6 +152,36 @@ ApiErrorModel _handleError(DioException error) {
       } else {
         return DataSource.DEFAULT.getFailure();
       }
+
+    // case DioExceptionType.badResponse:
+    //
+    //   final response = error.response;
+    //
+    //   if (response != null && response.data != null) {
+    //
+    //     // Validation Errors (422)
+    //     if (response.statusCode == 422) {
+    //
+    //       final data = response.data['data'];
+    //
+    //       if (data is Map<String, dynamic>) {
+    //
+    //         final firstError = data.values.first;
+    //
+    //         if (firstError is List && firstError.isNotEmpty) {
+    //
+    //           return ApiErrorModel(
+    //             code: 422,
+    //             message: firstError.first.toString(),
+    //           );
+    //         }
+    //       }
+    //     }
+    //
+    //     return ApiErrorModel.fromJson(response.data);
+    //   }
+    //
+    //   return DataSource.DEFAULT.getFailure();
     case DioExceptionType.unknown:
       if (error.response != null &&
           error.response?.statusCode != null &&
