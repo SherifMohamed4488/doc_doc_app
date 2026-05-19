@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
               // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             ),
             onGenerateRoute: onGenerateRoute,
-            initialRoute: MyRoutes.loginView,
+            initialRoute: MyRoutes.onBoardingView,
 
           ),
 
