@@ -108,7 +108,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           ],
         ),
 
-        Gap(24.h),
+        // Gap(24.h),
         // PassowrdValidations(
         //   hasLowerCase: hasLowerCase,
         //   hasUpperCase: hasUpperCase,
